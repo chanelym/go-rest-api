@@ -35,5 +35,5 @@ func NewDatabase() (*Database, error) {
 }
 
 func (d *Database) Ping(ctx context.Context) error {
-	return d.Client.PingContext(ctx)
+	return d.Client.DB.PingContext(ctx)
 }
