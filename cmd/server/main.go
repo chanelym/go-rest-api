@@ -1,8 +1,10 @@
 package main
 
 import (
+	"context"
 	"fmt"
 
+	book "github.com/chanelym/go-rest-api/internal/books"
 	"github.com/chanelym/go-rest-api/internal/database"
 )
 
@@ -28,7 +30,11 @@ func Run() error {
 		return err
 	}
 
-	fmt.Println("Database sucessfully connected and pinged.")
+	bookService := book.NewService(db)
+	fmt.Println(bookService.GetBook(
+		context.Background(),
+		"9a31bf83-28dc-4b8d-bf70-7d347a24ff2e",
+	))
 
 	return nil
 }
